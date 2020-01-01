@@ -4,21 +4,42 @@
     <script type="text/javascript" src="./javascripts/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="./javascripts/jquery.ajax-cross-origin.min.js"></script>
     <script type="text/javascript">
-    var n;
-    var info;
-        $.ajax({
-            crossOrigin : true,
-            url : "https://dhlottery.co.kr/gameResult.do?method=byWin",
-            success : function(data) {
-                //console.log(data);
-                n = $.parseHTML(data);
-                info = n[5];
-                console.log(info);
-            }
-        });
+    var n;var episode;var winNum="";$.ajax({crossOrigin:true,url:"https://dhlottery.co.kr/gameResult.do?method=byWin",success:function(data){n=$.parseHTML(data)[5];var len=n.content.length;var episodeFounded;for(var i=0;i<len;i+=1){if(n.content[i]>0&&!episodeFounded){episode=n.content[i]+n.content[i+1]+n.content[i+2];i+=3;episodeFounded=true}if(n.content[i]>0){winNum+=n.content[i]}if(n.content[i]==','){winNum+=","}if(n.content[i]=='+'){winNum+=","+n.content[i+1]+n.content[i+2];break}}$('#datas').append(episode+"/"+winNum)}});
     </script>
   </head>
 
   <body>
+    <header>
+        <div id="header-wrap">
+        <div id="header-full" class="content-full">
+        <div class="content-inner"> </div> </div>
+        <div id="header-fixed" class="content-fixed"> <div class="content-inner">
+        <ul class="">
+        <li class="" style="width:65.3281px;"><a href="index.html" data-title="Home" data-id="39344749" data-external="0" class=""><span class="page-title"><span class="page-title-inner">Home</span></span></a></li></ul>
+        <div class="wseSHBL"></div>
+        <div class="wseSHBR"></div>
+        <div class="wseSHTL"></div>
+        <div class="wseSHTR"></div></nav>
+        <div class="content-fixed bg wse-hd clr-bkg-hextransparent wse-hd-df" objtype="35"><div class="content-inner"> <div class="wseSHBL"></div> <div class="wseSHBR"></div> <div class="wseSHTL"></div> <div class="wseSHTR"></div></div></div></div> </div> </header>
+        <div id="body-content" class="" data-manual-drag-desktop="650" data-manual-drag-phone="378">
+        <div id="body-full" class="content-full"><div class="content-inner"><shared>
+        
+        
+        </shared>
+        </div></div>
+        <div id="body-fixed" class="content-fixed"><div class="content-inner"><shared>
+        
+        <div id="datas" style="color:white"></div>
+        
+        </shared>
+        <!--</div>-->
+        <!--</div>-->
+        <div id="body-bg" class="bg-container">
+        <div class="content-fixed bg clr-brd-df clr-bkg-df wse-pg wse-pg-df" objtype="34">
+        <div class="content-inner"><div class="wseSHBL"></div><div class="wseSHBR"></div><div class="wseSHTL"></div><div class="wseSHTR"></div></div></div></div></div><footer>
+        <div id="footer-wrap">
+        <div id="footer-full" class="content-full">
+        <div class="content-inner">
+     </footer>
   </body>
 </html>
