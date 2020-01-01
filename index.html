@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="./javascripts/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./javascripts/jquery.ajax-cross-origin.min.js"></script>
+    <script type="text/javascript">
+    var n;
+    var info;
+        $.ajax({
+            crossOrigin : true,
+            url : "https://dhlottery.co.kr/gameResult.do?method=byWin",
+            success : function(data) {
+                //console.log(data);
+                n = $.parseHTML(data);
+                info = n[5];
+                console.log(info);
+            }
+        });
+    </script>
+  </head>
+
+  <body>
+  </body>
+</html>
