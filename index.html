@@ -8,6 +8,7 @@
     $.ajax({
         crossOrigin: true,
         url: "https://dhlottery.co.kr/gameResult.do?method=byWin",
+        async:false,
         success: function (data) {
           var n;var episode;
     var winNum = "";
