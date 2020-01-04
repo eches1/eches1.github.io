@@ -4,7 +4,37 @@
     <script type="text/javascript" src="./javascripts/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="./javascripts/jquery.ajax-cross-origin.min.js"></script>
     <script type="text/javascript">
-    var n;var episode;var winNum="";$.ajax({crossOrigin:true,url:"https://dhlottery.co.kr/gameResult.do?method=byWin",success:function(data){n=$.parseHTML(data)[5];var len=n.content.length;var episodeFounded;for(var i=0;i<len;i+=1){if(n.content[i]>0&&!episodeFounded){episode=n.content[i]+n.content[i+1]+n.content[i+2];i+=3;episodeFounded=true}if(n.content[i]>0){winNum+=n.content[i]}if(n.content[i]==','){winNum+=","}if(n.content[i]=='+'){winNum+=","+n.content[i+1]+n.content[i+2];break}}$('#datas').append(episode+"/"+winNum)}});
+    $(document).ready(function() {
+    $.ajax({
+        crossOrigin: true,
+        url: "https://dhlottery.co.kr/gameResult.do?method=byWin",
+        success: function (data) {
+          var n;var episode;
+    var winNum = "";
+            n = $.parseHTML(data)[5];
+            var len = n.content.length;
+            var episodeFounded;
+            for (var i = 0; i < len; i += 1) {
+                if (n.content[i] > 0 && !episodeFounded) {
+                    episode = n.content[i] + n.content[i + 1] + n.content[i + 2];
+                    i += 3;
+                    episodeFounded = true;
+                }
+                if (n.content[i] > 0) {
+                    winNum += n.content[i];
+                }
+                if (n.content[i] == ',') {
+                    winNum += ",";
+                }
+                if (n.content[i] == '+') {
+                    winNum += "," + n.content[i + 1] + n.content[i + 2];
+                    break;
+                }
+            }
+            $('#datas').append(episode + "/" + winNum);
+        }
+    });
+    })
     </script>
   </head>
 
